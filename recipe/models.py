@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from authapp.models import *
 from cloudinary.models import CloudinaryField
 import datetime as dt
 

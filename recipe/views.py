@@ -6,9 +6,12 @@ from django.core import serializers
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+# New Code
 
 from .models import Country, Image, Ingredient, Profile, RecipeIngredient
 from .serializer import (CountrySerializer, ImageSerializer,
@@ -29,6 +32,8 @@ class UserList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (IsAuthenticated,)
 
 class UserDetails(APIView):
     def get_user(self, username):

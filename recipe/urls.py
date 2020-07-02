@@ -1,11 +1,14 @@
-from django.urls import path,re_path
+from django.urls import path,re_path,include
 from . import views as views
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken.views import ObtainAuthToken
 
 urlpatterns = [
     path('api/user/', views.UserList.as_view()),
-    path('api/user/user-id/<username>/',views.UserDetails.as_view()),
+    # path('api/user/user-id/<username>/',views.UserDetails.as_view()),
+    # path('api/auth/',ObtainAuthToken.as_view()),
+    # path('api/auth/', include('rest_auth.urls')),
     
     path('api/profiles/' ,views.ProfileList.as_view()),
     path('api/images/', views.ImageList.as_view()),
